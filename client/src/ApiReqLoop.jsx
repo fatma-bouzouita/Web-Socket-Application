@@ -22,10 +22,13 @@ export default function ApiReqLoop() {
 
   socket.on('connect', onConnect);
   socket.on('disconnect', (event) => console.log('disconnected ' + event));
-  socket.on('message', (message) => {
-    setMessage('')
-    setMessages(prev => [...prev, message])
-  })
+   //runs only once 
+   useEffect(() => {
+    socket.on('message', (message) => {
+      setMessage('')
+      setMessages(prev => [...prev, message])
+    })
+  }, [])
 
   useEffect(() => {
     fetch('http://localhost:5000/user').then(res => res.json()).then(data => setUser(data))
