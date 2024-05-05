@@ -30,7 +30,7 @@ export default function ApiReqLoop() {
   useEffect(() => {
     fetch('http://localhost:5000/user').then(res => res.json()).then(data => setUser(data))
 
-  }, [user])
+  }, [])
 
   return (
     <div className='flex flex-col gap-20'>
